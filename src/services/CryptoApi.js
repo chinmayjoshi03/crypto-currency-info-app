@@ -14,12 +14,22 @@ export const cryptoApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl }),
   endpoints: (builder) => ({
     getCryptos: builder.query({
-      query: () => createRequest('/coins'),  // Use /coins if you want a list of cryptocurrencies
+      query: (count) => createRequest(`/coins?limit=${count}`),  
     }),
     getCryptoStats: builder.query({
-      query: () => createRequest('/stats'),  // Use /stats to get global stats
+      query: () => createRequest('/stats'),  
     }),
+    getCryptoDetails: builder.query({
+      query: (coinId) => createRequest(`/coin/${coinId}`),  
+    }),
+    getCryptoHistory: builder.query({
+      query: ({ coinId, timeperiod }) => createRequest(`coin/${coinId}/history?timeperiod=${timeperiod}`),
+    }),
+    getExchanges: builder.query({
+      query: () => createRequest('/exchanges'),
+    }),
+
   }),
 });
 
-export const { useGetCryptosQuery, useGetCryptoStatsQuery } = cryptoApi;
+export const { useGetCryptosQuery, useGetCryptoStatsQuery, useGetCryptoDetailsQuery,  useGetCryptoHistoryQuery, useGetExchangesQuery,} = cryptoApi;

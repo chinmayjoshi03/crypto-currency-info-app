@@ -1,11 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { cryptoApi } from "../services/CryptoApi";
+import { cryptoNewsApi } from "../services/cryptoNewsApi";
 
 export default configureStore({
   reducer: {
     [cryptoApi.reducerPath]: cryptoApi.reducer,
+    [cryptoNewsApi.reducerPath]: cryptoNewsApi.reducer,
   },
-  // Adding the api middleware to enable caching, invalidation, polling, and other features of RTK Query
-  middleware: (getDefaultMiddleware) => 
-    getDefaultMiddleware().concat(cryptoApi.middleware),
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(cryptoApi.middleware, cryptoNewsApi.middleware),
 });

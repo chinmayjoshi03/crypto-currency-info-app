@@ -11,6 +11,7 @@
     "antd": "^5.20.6",
     "axios": "^1.7.7",
     "chart.js": "^4.4.4",
+    "chartjs-adapter-date-fns": "^3.0.0",
     "html-react-parser": "^5.1.16",
     "millify": "^6.1.0",
     "moment": "^2.30.1",
